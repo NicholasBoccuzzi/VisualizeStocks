@@ -28,3 +28,64 @@
     50% { font-size: 48px;}
     100% { font-size: 40px; }
 }
+
+.menu-open {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0%;
+  height: 100%;
+  background: white;
+  animation: growMenu .5s linear;
+  padding: 20px;
+  border-right: 1px solid black;
+}
+
+.default-menu {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: -30%;
+  padding: 20px;
+  height: 100%;
+  background: white;
+  border-right: 1px solid black;
+}
+
+.menu-close {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: -30%;
+  height: 100%;
+  background: white;
+  animation: shrinkMenu .5s linear;
+  padding: 20px;
+  border-right: 1px solid black;
+}
+
+@keyframes growMenu {
+  0% { left: -30% }
+  100% { left: 0%}
+}
+
+@keyframes shrinkMenu {
+  0% { left: 0% }
+  100% { left: -30%}
+}
+
+
+.menu-icon {
+  opacity: 1;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.menu-icon:hover {
+  opacity: .7;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
