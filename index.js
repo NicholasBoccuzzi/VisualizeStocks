@@ -30,13 +30,51 @@ document.getElementById("textSubmit").addEventListener("click", (event) => {
 
 
 const parseData = function(data) {
-  let returnObject = {};
+  let returnObject = {
+    companyName: "",
+    CEO: "",
+    description: "",
+    exchange: "",
+    industry: "",
+    issueType: "",
+    sector: "",
+    symbol: "",
+    tags: "",
+    website: "",
+  };
 
+  console.log(data);
   if (data.companyName) {
     returnObject.companyName = data.companyName;
-  } else {
-    returnObject.companyName = "Missing";
   }
+  if (data.CEO) {
+    returnObject.CEO = data.CEO;
+  }
+  if (data.description) {
+    returnObject.description = data.description;
+  }
+  if (data.exchange) {
+    returnObject.exchange = data.exchange;
+  }
+  if (data.industry) {
+    returnObject.industry = data.industry;
+  }
+  if (data.issueType) {
+    returnObject.issueType = data.issueType;
+  }
+  if (data.sector) {
+    returnObject.sector = data.sector;
+  }
+  if (data.symbol) {
+    returnObject.symbol = data.symbol;
+  }
+  if (data.tags) {
+    returnObject.tags = data.tags;
+  }
+  if (data.website) {
+    returnObject.website = data.website;
+  } 
+
   console.log(returnObject)
   return returnObject;
 }
