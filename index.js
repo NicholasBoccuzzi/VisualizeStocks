@@ -3,18 +3,19 @@ let api = "https://api.iextrading.com/1.0/stock/aapl/company";
 let textInput = document.getElementById("textInput");
 let menuContainer = document.getElementById("menuContainer");
 
-document.getElementById("toggleMenuButton").addEventListener("click", (event) => {
-  if (menuContainer.className === "default-menu") {
+document.getElementsByName("toggleMenuButton").forEach((element) => {element.addEventListener("click", (event) => {
+  if (menuContainer.className.includes("start-menu")) {
     d3.select("#menuContainer")
-    .attr("class", "menu-open")
-  } else if (menuContainer.className === "menu-open") {
+    .attr("class", "default-menu open-menu")
+  } else if (menuContainer.className.includes("open-menu")) {
     d3.select("#menuContainer")
-    .attr("class", "menu-close")
-  } else if (menuContainer.className === "menu-close") {
+    .attr("class", "default-menu close-menu")
+  } else if (menuContainer.className.includes("close-menu")) {
     d3.select("#menuContainer")
-    .attr("class", "menu-open")
-  }
+    .attr("class", "default-menu open-menu")
+  }})
 });
+
 
 document.addEventListener("DOMContentLoaded", (event) => {
   return fetch(api).then((response) => { response.json().then((response) => {

@@ -1,17 +1,21 @@
 .main-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding: 50px;
 }
 
 .title-container {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  text-align: center;
+  width: 100%;
+  justify-content: center;
 }
 
 .title-text {
   font-size: 100px;
+  text-align: center;
 }
 
 .loader {
@@ -29,39 +33,36 @@
     100% { font-size: 40px; }
 }
 
-.menu-open {
-  display: block;
-  position: absolute;
+.open-menu {
   top: 0px;
   left: 0%;
   height: 100%;
-  background: white;
   animation: growMenu .5s linear;
-  padding: 20px;
-  border-right: 1px solid black;
+  z-index: 100
+}
+
+.start-menu {
+  top: 0px;
+  left: -30%;
 }
 
 .default-menu {
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  top: 0px;
-  left: -30%;
   padding: 20px;
   height: 100%;
   background: white;
   border-right: 1px solid black;
 }
 
-.menu-close {
-  display: block;
-  position: absolute;
+
+
+.close-menu {
   top: 0px;
   left: -30%;
   height: 100%;
-  background: white;
   animation: shrinkMenu .5s linear;
-  padding: 20px;
-  border-right: 1px solid black;
 }
 
 @keyframes growMenu {
@@ -83,6 +84,7 @@
 
 .menu-icon:hover {
   opacity: .7;
+  z-index: 10
 }
 
 .flex-row {
