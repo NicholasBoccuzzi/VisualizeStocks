@@ -6,24 +6,30 @@
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body class="flex-row">
+  <body class="flex-row fullscreen">
     <section id="menuContainer" class="default-menu start-menu">
       <div class="menu-icon-container">
         <i class="fas fa-bars menu-icon" name="toggleMenuButton"></i>
       </div>
-      <div class="menu-text-container">
-        <input type="text" class= "text-input" value="" id="textInput"></input>
-        <button type="submit" id="textSubmit"></button>
+      <div class="flex-column menu-item-container">
+        <div class="menu-text-container">
+          <input type="text" class= "text-input" value="" id="textInput"></input>
+        </div>
+        <div class="text-submit-container">
+          <button type="submit" id="textSubmit" class="text-submit-button">Submit</button>
+        </div>
       </div>
     </section>
+
     <main class="main-container">
       <i class="fas fa-bars menu-icon" name="toggleMenuButton"></i>
-      <section class="title-container">
-        <div id="companyTitle" class="loader">
-          <i class="fas fa-dollar-sign"></i>
-        </div>
+      <section class="content-container">
+        <main class="title-container">
+          <div id="companyTitle" class="loader">
+            <i class="fas fa-dollar-sign"></i>
+          </div>
+        </main>
       </section>
-
 
 
 
