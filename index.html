@@ -21,19 +21,30 @@
       </div>
     </section>
 
-    <main class="main-container">
+    <main id="main" class="main-container hide">
       <i class="fas fa-bars menu-icon" name="toggleMenuButton"></i>
-      <section class="content-container">
-        <main class="title-container">
-          <div id="companyTitle" class="loader">
-            <i class="fas fa-dollar-sign"></i>
+      <div class="content-container">
+        <section class="title-container">
+          <div id="companyTitle" class="">
           </div>
-        </main>
-      </section>
+        </section>
+        <section class="info-container">
+          <div class="arrow-container">
+            <div class="info-title">
+              Company Information
+            </div>
+            <i class="fa fa-angle-right default-arrow"></i>
+          </div>
+        </section>
+      </div>
 
 
 
     </main>
+    <main id="loader" class="loader">
+      <i class="fas fa-dollar-sign"></i>
+    </main>
+
     <script src="https://d3js.org/d3.v5.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
   </body>

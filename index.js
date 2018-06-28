@@ -20,7 +20,7 @@ document.getElementsByName("toggleMenuButton").forEach((element) => {element.add
 document.addEventListener("DOMContentLoaded", (event) => {
   return fetch(api).then((response) => { response.json().then((response) => {
     let result = parseData(response);
-    window.setTimeout(() => {switchData(result)}, 2000)
+    window.setTimeout(() => {switchData(result)}, 500)
   });})
 });
 
@@ -73,8 +73,7 @@ const parseData = function(data) {
   }
   if (data.website) {
     returnObject.website = data.website;
-  } 
-
+  }
   console.log(returnObject)
   return returnObject;
 }
@@ -87,6 +86,8 @@ const toggleMenu = function() {
 
 // Used to switch the data currently on the screen with the loaded information
 const switchData = function(result) {
+  d3.select("#main").attr("class", "main-container");
+  d3.select("#loader").attr("class", "loader hide");
   d3.select("#companyTitle")
   .text(result.companyName)
   .attr("class", "title-text")
@@ -94,11 +95,19 @@ const switchData = function(result) {
 
 
 const fetchNewData = function(input) {
-  return fetch(createCompanyApi(input)).then((response) => { response.json().then((response) => {
-    let result = parseData(response);
-      window.setTimeout(() => {switchData(result)}, 2000)
+  return (
+    hideInfo(),
+    fetch(createCompanyApi(input)).then((response) => { response.json().then((response) => {
+      let result = parseData(response);
+        window.setTimeout(() => {switchData(result)}, 500)
+      })
     })
-  })
+  )
+}
+
+const hideInfo = function () {
+  d3.select("#main").attr("class", "main-container hide");
+  d3.select("#loader").attr("class", "loader");
 }
 
 const createCompanyApi = function(input) {

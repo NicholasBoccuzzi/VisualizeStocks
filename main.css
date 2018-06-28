@@ -64,11 +64,10 @@ table {
 }
 
 .content-container {
-  max-width: 1366px;
   display: flex;
-  flex-direction: flex-start;
+  flex-direction: column;
   align-self: center;
-
+  width: 100%;
 }
 
 .title-text {
@@ -82,10 +81,10 @@ table {
   left: 50%;
   color: green;
   font-size: 100px;
-  animation: spin .5s linear infinite;
+  animation: elastic .5s linear infinite;
 }
 
-@keyframes spin {
+@keyframes elastic {
     0% { font-size: 40px; }
     50% { font-size: 48px;}
     100% { font-size: 40px; }
@@ -274,4 +273,37 @@ table {
   width:100%;
   height:100%;
   background: #f7f7f7;
+}
+
+.hide {
+  display: none;
+}
+
+.arrow-container {
+  font-size: 18px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 10px;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.info-title {
+  margin-right: 20px;
+}
+
+.info-container {
+  margin-top: 50px;
+  max-width: 1366px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-self: center;
+  width: 100%;
+}
+
+.default-arrow {
+  font-size: 30px;
 }
