@@ -51,43 +51,62 @@ table {
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+.top-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   padding: 50px;
+  position:relative;
 }
 
 .title-container {
   display: flex;
   align-items: center;
   text-align: center;
-  width: 100%;
   justify-content: center;
   align-self: center;
+  padding-top: 25px;
+  width: 100%;
+  padding-bottom: 20px;
+  background: white;
+  box-shadow: 0px 0 20px -2px #888;
 }
 
 .content-container {
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
   align-self: center;
   width: 100%;
+  background: #f7f7f7;
 }
 
 .title-text {
   font-size: 100px;
   text-align: center;
+  font-family: 'Scheherazade', serif;
 }
 
 .loader {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
+  right: 0px;
+  bottom: 0px;
   color: green;
-  font-size: 100px;
-  animation: elastic .5s linear infinite;
+  font-size: 80px;
+  animation: elastic .6s linear infinite;
 }
 
 @keyframes elastic {
-    0% { font-size: 40px; }
-    50% { font-size: 48px;}
-    100% { font-size: 40px; }
+    0% { opacity: 0;
+    }
+    50% { opacity: 1;
+    }
+    100% { opacity: 0;
+    }
 }
 
 .open-menu {
@@ -111,7 +130,7 @@ table {
   position: absolute;
   padding: 20px 0px;
   height: 100%;
-  width: 500px;
+  width: 400px;
   max-width: 100%;
   background: white;
   -webkit-box-shadow: 0px 0 20px -2px #888;
@@ -288,6 +307,7 @@ table {
   padding: 10px;
   width: fit-content;
   cursor: pointer;
+
 }
 
 .info-title {
@@ -295,15 +315,157 @@ table {
 }
 
 .info-container {
-  margin-top: 50px;
   max-width: 1366px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   align-self: center;
   width: 100%;
+  padding: 0px 50px;
 }
 
 .default-arrow {
   font-size: 30px;
+}
+
+.open-arrow {
+  font-size: 30px;
+  animation: openArrow .1s linear;
+  transform: rotate(90deg);
+}
+
+.close-arrow {
+  font-size: 30px;
+  animation: closeArrow .1s linear;
+}
+
+@keyframes openArrow {
+  0% {transform: rotate(0deg)};
+  100% {transform: rotate(90deg)};
+}
+
+@keyframes closeArrow {
+  0% {transform: rotate(90deg)};
+  100% {transform: rotate(0deg)};
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.menu-page-icon {
+  position: absolute;
+  top:50px;
+  left: 50px;
+}
+
+@media only screen and (max-width: 800px) {
+    .title-text {
+      font-size: 25px;
+      position: relative;
+      left: auto;
+      top: auto;
+      right: auto;
+      bottom: auto;
+      margin-top: 0px;
+    }
+
+    .title-container {
+      width: 100%;
+    }
+
+    .top-container {
+      display: flex;
+      justify-content: none;
+      flex-direction: row;
+      align-items: center;
+      padding: 25px;
+    }
+
+    .menu-icon-container {
+      margin-top:5px;
+    }
+
+    .arrow-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-self: center;
+    }
+
+    .content-container {
+      padding: 0px 25px;
+    }
+}
+
+.default-company-info-container {
+  max-width: 1366px;
+  width: 100%;
+  height: 0px;
+  background: white;
+  box-shadow: 0px 4px 9px 0px rgb(0,0,0, .2);
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.company-info-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.shrink-info {
+  max-width: 1366px;
+  height: 0px;
+  width: 100%;
+  animation: shrinkInfo .25s linear;
+  box-shadow: 0px 4px 9px 0px rgb(0,0,0, .2);
+  display: flex;
+  flex-direction: row;
+  background: white;
+  overflow: hidden;
+}
+
+.grow-info {
+  max-width: 1366px;
+  height: 500px;
+  width: 100%;
+  animation: growInfo .25s linear;
+  box-shadow: 0px 4px 9px 0px rgb(0,0,0, .2);
+  display: flex;
+  flex-direction: row;
+  padding: 25px 0px;
+  background:white;
+  overflow: hidden;
+
+}
+
+@keyframes shrinkInfo {
+  0% {
+    height: 500px;
+    padding: 25px 0px;
+  }
+
+  100% {
+    height: 0px;
+    padding: 0px;
+  }
+}
+
+@keyframes growInfo {
+  0% {
+    padding: 0px;
+    height: 0px;
+  }
+
+  100% {
+    height: 500px;
+    padding: 25px 0px;
+  }
 }

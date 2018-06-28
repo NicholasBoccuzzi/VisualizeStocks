@@ -2,6 +2,22 @@
 let api = "https://api.iextrading.com/1.0/stock/aapl/company";
 let textInput = document.getElementById("textInput");
 let menuContainer = document.getElementById("menuContainer");
+let companyArrow = document.getElementById("companyArrow");
+console.log(companyArrow);
+
+
+document.getElementById("companyInfo").addEventListener("click", (event) => {
+  if (companyArrow.className.includes("default-arrow") ||
+      companyArrow.className.includes("close-arrow")) {
+    d3.select("#companyInfoContainer").attr("class", "grow-info");
+    d3.select("#companyArrow")
+    .attr("class", "fa fa-angle-right open-arrow");
+  } else if (companyArrow.className.includes("open-arrow")) {
+    d3.select("#companyInfoContainer").attr("class", "shrink-info");
+    d3.select("#companyArrow")
+    .attr("class", "fa fa-angle-right close-arrow");
+  }
+});
 
 document.getElementsByName("toggleMenuButton").forEach((element) => {element.addEventListener("click", (event) => {
   if (menuContainer.className.includes("start-menu")) {
@@ -86,6 +102,8 @@ const toggleMenu = function() {
 
 // Used to switch the data currently on the screen with the loaded information
 const switchData = function(result) {
+  d3.select("#companyInfoContainer").attr("class", "default-company-info-container")
+  d3.select("#companyArrow").attr("class", "fa fa-angle-right default-arrow");
   d3.select("#main").attr("class", "main-container");
   d3.select("#loader").attr("class", "loader hide");
   d3.select("#companyTitle")
