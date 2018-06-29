@@ -292,6 +292,7 @@ table {
   width:100%;
   height:100%;
   background: #f7f7f7;
+  font-family: 'Oswald', sans-serif;
 }
 
 .hide {
@@ -320,8 +321,12 @@ table {
   justify-content: flex-start;
   flex-direction: column;
   align-self: center;
-  width: 100%;
-  padding: 0px 50px;
+  margin: 0px 50px;
+}
+
+.company-info-row {
+  display: flex;
+  flex-direction: row;
 }
 
 .default-arrow {
@@ -365,45 +370,6 @@ table {
   left: 50px;
 }
 
-@media only screen and (max-width: 800px) {
-    .title-text {
-      font-size: 25px;
-      position: relative;
-      left: auto;
-      top: auto;
-      right: auto;
-      bottom: auto;
-      margin-top: 0px;
-    }
-
-    .title-container {
-      width: 100%;
-    }
-
-    .top-container {
-      display: flex;
-      justify-content: none;
-      flex-direction: row;
-      align-items: center;
-      padding: 25px;
-    }
-
-    .menu-icon-container {
-      margin-top:5px;
-    }
-
-    .arrow-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-self: center;
-    }
-
-    .content-container {
-      padding: 0px 25px;
-    }
-}
-
 .default-company-info-container {
   max-width: 1366px;
   width: 100%;
@@ -415,10 +381,6 @@ table {
   overflow: hidden;
 }
 
-.company-info-row {
-  display: flex;
-  flex-direction: column;
-}
 
 .shrink-info {
   max-width: 1366px;
@@ -440,32 +402,135 @@ table {
   box-shadow: 0px 4px 9px 0px rgb(0,0,0, .2);
   display: flex;
   flex-direction: row;
-  padding: 25px 0px;
   background:white;
   overflow: hidden;
-
 }
 
 @keyframes shrinkInfo {
   0% {
     height: 500px;
-    padding: 25px 0px;
   }
 
   100% {
     height: 0px;
-    padding: 0px;
   }
 }
 
 @keyframes growInfo {
   0% {
-    padding: 0px;
     height: 0px;
   }
 
   100% {
     height: 500px;
-    padding: 25px 0px;
   }
 }
+
+.company-info-padding {
+  padding: 50px;
+}
+
+.company-info-description {
+  color: #7f7f7f;
+  width: 100%;
+}
+
+.company-info-tags {
+  color: #7f7f7f;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.ci-title {
+  font-size: 18px;
+  color: black;
+  text-decoration: underline;
+  margin-bottom: 6px;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-info-50 {
+  width: 50%;
+  margin-bottom: 25px;
+
+}
+
+.company-info-25 {
+  margin-bottom: 25px;
+  width: 25%;
+}
+
+@media only screen and (max-width: 800px) {
+    .title-text {
+      font-size: 25px;
+      position: relative;
+      left: auto;
+      top: auto;
+      right: auto;
+      bottom: auto;
+      margin-top: 0px;
+    }
+
+    .menu-page-icon {
+      top: 20px;
+      left: 50px;
+    }
+
+    .title-container {
+      width: 100%;
+    }
+
+    .top-container {
+      display: flex;
+      justify-content: none;
+      flex-direction: row;
+      align-items: center;
+      padding: 25px;
+    }
+
+    .menu-icon-container {
+      margin-top:0px;
+    }
+
+    .info-container{
+      width: 100%;
+    }
+
+    .arrow-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-self: center;
+    }
+
+    .content-container {
+      padding: 0px 25px;
+    }
+
+    .company-info-row {
+      flex-direction: column;
+    }
+
+    .company-info-50 {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    .company-info-25 {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+}
+
+/*
+color-pal
+
+grey for text: #7f7f7f
+white for background
+
+
+*/

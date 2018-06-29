@@ -85,7 +85,14 @@ const parseData = function(data) {
     returnObject.symbol = data.symbol;
   }
   if (data.tags) {
-    returnObject.tags = data.tags;
+    let tagReturn = "";
+    data.tags.forEach((tag, idx) => {
+      tagReturn += tag;
+      if (data.tags[idx + 1]) {
+        tagReturn += ", ";
+      }
+    });
+    returnObject.tags = tagReturn;
   }
   if (data.website) {
     returnObject.website = data.website;
@@ -100,7 +107,11 @@ const toggleMenu = function() {
 }
 
 
-// Used to switch the data currently on the screen with the loaded information
+/*
+Used to switch the data currently on the screen with the loaded information
+During the switch, I switch back to the loading screen and ensure that the company
+information tab is closed while also switching to the new information
+*/
 const switchData = function(result) {
   d3.select("#companyInfoContainer").attr("class", "default-company-info-container")
   d3.select("#companyArrow").attr("class", "fa fa-angle-right default-arrow");
@@ -109,6 +120,13 @@ const switchData = function(result) {
   d3.select("#companyTitle")
   .text(result.companyName)
   .attr("class", "title-text")
+
+  d3.select("#ciwebsite").text(result.website).attr("href", result.website);
+  d3.select("#citags").text(result.tags);
+  d3.select("#ciCEO").text(result.CEO);
+  d3.select("#ciexchange").text(result.exchange);
+  d3.select("#cisector").text(result.sector);
+  d3.select("#cidescription").text(result.description);
 }
 
 
