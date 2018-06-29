@@ -6,6 +6,11 @@ let companyArrow = document.getElementById("companyArrow");
 console.log(companyArrow);
 
 
+document.getElementById("menuOffclick").addEventListener("click", (event) => {
+  d3.select("#menuContainer").attr("class", "default-menu close-menu");
+  d3.select("#menuOffclick").attr("class", "menu-offclick hide");
+});
+
 document.getElementById("companyInfo").addEventListener("click", (event) => {
   if (companyArrow.className.includes("default-arrow") ||
       companyArrow.className.includes("close-arrow")) {
@@ -21,14 +26,14 @@ document.getElementById("companyInfo").addEventListener("click", (event) => {
 
 document.getElementsByName("toggleMenuButton").forEach((element) => {element.addEventListener("click", (event) => {
   if (menuContainer.className.includes("start-menu")) {
-    d3.select("#menuContainer")
-    .attr("class", "default-menu open-menu")
+    d3.select("#menuOffclick").attr("class", "menu-offclick");
+    d3.select("#menuContainer").attr("class", "default-menu open-menu")
   } else if (menuContainer.className.includes("open-menu")) {
-    d3.select("#menuContainer")
-    .attr("class", "default-menu close-menu")
+    d3.select("#menuOffclick").attr("class", "menu-offclick hide");
+    d3.select("#menuContainer").attr("class", "default-menu close-menu")
   } else if (menuContainer.className.includes("close-menu")) {
-    d3.select("#menuContainer")
-    .attr("class", "default-menu open-menu")
+    d3.select("#menuOffclick").attr("class", "menu-offclick");
+    d3.select("#menuContainer").attr("class", "default-menu open-menu")
   }})
 });
 
