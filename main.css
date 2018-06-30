@@ -112,24 +112,25 @@ table {
 .open-menu {
   top: 0px;
   left: 0%;
-  height: 100%;
+  height: auto;
   opacity: 1;
   animation: growMenu .4s ease-out;
-  z-index: 100
+  z-index: 100;
+  min-height: 100%;
 }
 
 .start-menu {
   top: 0px;
   left: -150%;
-  opacity: 0;
+  opacity: 0;f
 }
 
 .default-menu {
   display: flex;
   flex-direction: column;
   position: absolute;
-  padding: 20px 0px;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   width: 400px;
   max-width: 100%;
   background: white;
@@ -140,7 +141,8 @@ table {
 .close-menu {
   top: 0px;
   left: -150%;
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   z-index: 100;
   opacity: 0;
   animation: shrinkMenu 1s ease-in;
@@ -202,7 +204,7 @@ table {
   display:block;
   align-items: center;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .menu-text-container {
@@ -316,11 +318,13 @@ table {
   padding: 10px;
   width: fit-content;
   cursor: pointer;
-
+  margin-bottom: 10px;
 }
 
 .info-title {
   margin-right: 20px;
+  font-size: 30px;
+
 }
 
 .info-container {
@@ -329,7 +333,7 @@ table {
   justify-content: flex-start;
   flex-direction: column;
   align-self: center;
-  margin: 0px 50px;
+  margin: 0px 50px 50px 50px;
 }
 
 .company-info-row {
@@ -387,6 +391,7 @@ table {
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  opacity: 0;
 }
 
 
@@ -400,12 +405,11 @@ table {
   flex-direction: row;
   background: white;
   overflow: hidden;
+  opacity: 0;
 }
 
 .grow-info {
   max-width: 1366px;
-  min-height: 500px;
-  height: auto;
   width: 100%;
   animation: growInfo .25s linear;
   box-shadow: 0px 4px 9px 0px rgb(0,0,0, .2);
@@ -413,32 +417,38 @@ table {
   flex-direction: row;
   background:white;
   overflow: hidden;
+  opacity: 1;
 }
 
 @keyframes shrinkInfo {
   0% {
     height: 500px;
     min-height: 500px;
+    opacity: 1;
+  }
 
+  50% {
+    opacity: .1;
   }
 
   100% {
     height: 0px;
     min-height: 0px;
-
+    opacity: 0;
   }
 }
 
 @keyframes growInfo {
   0% {
-    min-height: 0px;
-    height: 0px;
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 1;
   }
 
   100% {
-    height: 500px;
-    min-height: 0px;
-
+    opacity: 1;
   }
 }
 
@@ -454,11 +464,11 @@ table {
 .company-info-tags {
   color: #7f7f7f;
   width: auto;
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 .ci-title {
-  font-size: 18px;
+  font-size: 20px;
   color: black;
   text-decoration: underline;
   margin-bottom: 6px;
@@ -472,12 +482,39 @@ table {
 .company-info-50 {
   width: 50%;
   margin-bottom: 25px;
-
+  font-size: 24px;
 }
 
 .company-info-25 {
   margin-bottom: 25px;
   width: 25%;
+  font-size: 24px;
+}
+
+.ci-top-info {
+  color: black;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.ci-top-info {
+  color: black;
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.link-color {
+  color: #3fed00;
+}
+
+.ticker-list-container{
+  margin-top: 50px;
+  width: 250px;
+  height: 300px;
+  max-height: 500px;
+  overflow: scroll;
+  border: 1px solid black;
+  border-radius: 2px;
 }
 
 @media only screen and (max-width: 900px) {
@@ -509,7 +546,7 @@ table {
     }
 
     .menu-icon-container {
-      margin-top:0px;
+      margin-top: 20px;
     }
 
     .info-container{
@@ -517,8 +554,6 @@ table {
     }
 
     .arrow-container {
-      display: flex;
-      flex-direction: column;
       justify-content: center;
       align-self: center;
     }

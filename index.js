@@ -1,10 +1,10 @@
 // const api = "https://api.iextrading.com/1.0/stock/?symbols=fb"
 let api = "https://api.iextrading.com/1.0/stock/aapl/company";
+let stockApi = "https://api.iextrading.com/1.0/stock/aapl/chart/1m";
+let stockList = "https://api.iextrading.com/1.0/ref-data/symbols";
 let textInput = document.getElementById("textInput");
 let menuContainer = document.getElementById("menuContainer");
 let companyArrow = document.getElementById("companyArrow");
-console.log(companyArrow);
-
 
 document.getElementById("menuOffclick").addEventListener("click", (event) => {
   d3.select("#menuContainer").attr("class", "default-menu close-menu");
@@ -39,15 +39,19 @@ document.getElementsByName("toggleMenuButton").forEach((element) => {element.add
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  return fetch(api).then((response) => { response.json().then((response) => {
+  return (
+
+    fetch(api).then((response) => { response.json().then((response) => {
     let result = parseData(response);
     window.setTimeout(() => {switchData(result)}, 500)
-  });})
+  });}).then(fetch(stockApi).then((response) => { console.log(response.json()); }))
+  )
 });
 
 document.getElementById("textSubmit").addEventListener("click", (event) => {
   fetchNewData(textInput.value);
 });
+
 
 
 const parseData = function(data) {
@@ -127,10 +131,13 @@ const switchData = function(result) {
   .attr("class", "title-text")
 
   d3.select("#ciwebsite").text(result.website).attr("href", result.website);
+  d3.select("#cicompany").text(result.companyName);
   d3.select("#citags").text(result.tags);
   d3.select("#ciCEO").text(result.CEO);
   d3.select("#ciexchange").text(result.exchange);
   d3.select("#cisector").text(result.sector);
+  d3.select("#citicker").text(result.symbol);
+  d3.select("#ciIssueType").text(result.issueType);
   d3.select("#cidescription").text(result.description);
 }
 
