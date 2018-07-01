@@ -2,6 +2,12 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+body {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -515,6 +521,21 @@ table {
   border-radius: 2px;
 }
 
+.ticker-list-item {
+  width: 100%;
+  padding: 4px 0px;
+  margin-left:10px;
+  cursor: pointer;
+}
+
+.ticker-list-item:hover {
+  background: #f7f7f7;
+}
+
+.ticker-list-item:active {
+  background: #cecece;
+}
+
 @media only screen and (max-width: 900px) {
     .title-text {
       font-size: 25px;
@@ -573,12 +594,6 @@ table {
       width: 100%;
       margin-bottom: 15px;
     }
-}
-
-body {
-  height: 100%;
-  position: relative;
-  width: 100%;
 }
 
 /*

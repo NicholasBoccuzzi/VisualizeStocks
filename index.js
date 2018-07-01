@@ -158,10 +158,19 @@ const fetchMenuTickers = function() {
   return (
     fetch(stockList).then((response) => {
       response.json().then((result) => {
-        for (var i = result[]; i < array.length; i++) {
-          array[i]
+        let currentListNum = parseInt(tickerListContainer.getAttribute("data"))
+        for (var i = 0; i < result.length; i++) {
+          let element = document.createElement("div");
+          element.innerHTML = `${result[i].symbol}`;
+          element.setAttribute("id", "tickerListItem");
+          element.setAttribute("class", "ticker-list-item")
+          element.setAttribute("data", result[i]);
+
+          console.log(element);
+          d3.select("#tickerListContainer").append(function() {
+            return element;
+          })
         }
-        })
       })
     })
   )
