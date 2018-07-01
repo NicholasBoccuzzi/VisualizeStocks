@@ -5,6 +5,7 @@ let stockList = "https://api.iextrading.com/1.0/ref-data/symbols";
 let textInput = document.getElementById("textInput");
 let menuContainer = document.getElementById("menuContainer");
 let companyArrow = document.getElementById("companyArrow");
+let tickerListContainer = document.getElementById("tickerListContainer");
 
 document.getElementById("menuOffclick").addEventListener("click", (event) => {
   d3.select("#menuContainer").attr("class", "default-menu close-menu");
@@ -40,11 +41,11 @@ document.getElementsByName("toggleMenuButton").forEach((element) => {element.add
 
 document.addEventListener("DOMContentLoaded", (event) => {
   return (
-
+    fetchMenuTickers(),
     fetch(api).then((response) => { response.json().then((response) => {
     let result = parseData(response);
     window.setTimeout(() => {switchData(result)}, 500)
-  });}).then(fetch(stockApi).then((response) => { console.log(response.json()); }))
+  });})/*.then(fetch(stockApi).then((response) => { console.log(response.json()); }))   --- fetch Stock Data goes here*/
   )
 });
 
@@ -148,6 +149,19 @@ const fetchNewData = function(input) {
     fetch(createCompanyApi(input)).then((response) => { response.json().then((response) => {
       let result = parseData(response);
         window.setTimeout(() => {switchData(result)}, 500)
+      })
+    })
+  )
+}
+
+const fetchMenuTickers = function() {
+  return (
+    fetch(stockList).then((response) => {
+      response.json().then((result) => {
+        for (var i = result[]; i < array.length; i++) {
+          array[i]
+        }
+        })
       })
     })
   )
