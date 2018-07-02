@@ -147,6 +147,7 @@ table {
 .close-menu {
   top: 0px;
   left: -150%;
+  min-height: 100vh;
   height: 100%;
   z-index: 100;
   opacity: 0;
@@ -267,6 +268,10 @@ table {
 .text-submit-container:hover {
   background: #dbffde;
   animation: fadeToGrey .5s linear;
+}
+
+.text-submit-container:active {
+  background: #a0ffa8;
 }
 
 @keyframes fadeToGrey  {
@@ -523,8 +528,8 @@ table {
 
 .ticker-list-item {
   width: 100%;
-  padding: 4px 0px;
-  margin-left:10px;
+  padding: 8px 0px;
+  text-align: center;
   cursor: pointer;
 }
 

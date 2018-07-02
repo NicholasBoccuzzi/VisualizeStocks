@@ -25,6 +25,10 @@ document.getElementById("companyInfo").addEventListener("click", (event) => {
   }
 });
 
+tickerListContainer.addEventListener("click", (event) => {
+  fetchNewData(event.target.innerHTML);
+});
+
 document.getElementsByName("toggleMenuButton").forEach((element) => {element.addEventListener("click", (event) => {
   if (menuContainer.className.includes("start-menu")) {
     d3.select("#menuOffclick").attr("class", "menu-offclick");
@@ -50,7 +54,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 document.getElementById("textSubmit").addEventListener("click", (event) => {
-  fetchNewData(textInput.value);
+  if (textInput.value.length > 0) {
+    fetchNewData(textInput.value);
+  };
 });
 
 
@@ -163,10 +169,8 @@ const fetchMenuTickers = function() {
           let element = document.createElement("div");
           element.innerHTML = `${result[i].symbol}`;
           element.setAttribute("id", "tickerListItem");
-          element.setAttribute("class", "ticker-list-item")
+          element.setAttribute("class", "ticker-list-item noselect")
           element.setAttribute("data", result[i]);
-
-          console.log(element);
           d3.select("#tickerListContainer").append(function() {
             return element;
           })
