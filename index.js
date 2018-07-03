@@ -7,6 +7,7 @@ let menuContainer = document.getElementById("menuContainer");
 let companyArrow = document.getElementById("companyArrow");
 let stockArrow = document.getElementById("stockArrow");
 let tickerListContainer = document.getElementById("tickerListContainer");
+let currentCompanies = ["aapl"];
 
 document.getElementById("menuOffclick").addEventListener("click", (event) => {
   d3.select("#menuContainer").attr("class", "default-menu close-menu");
@@ -164,6 +165,7 @@ const switchData = function(result) {
 const fetchNewData = function(input) {
   return (
     hideInfo(),
+    currentCompanies.push(input),
     fetch(createCompanyApi(input)).then((response) => { response.json().then((response) => {
       let result = parseData(response);
         window.setTimeout(() => {switchData(result)}, 500)
@@ -201,6 +203,19 @@ const createCompanyApi = function(input) {
   let api = `https://api.iextrading.com/1.0/stock/${input}/company`;
   return api;
 }
+
+const fetchStockData = function(company, timeframe) {
+
+}
+
+const createStockApi = function(company, timeframe) {
+  if (!timeframe) {
+    return `https://api.iextrading.com/1.0/stock/${company}/chart/1m`;
+  } else {
+    return `https://api.iextrading.com/1.0/stock/${company}/chart/${timeframe}`;
+  }
+}
+
 
 const drawChart = function(data) {
   let svgWidth = 600, svgHeight = 400;
