@@ -218,7 +218,7 @@ const parseStockData = function(data) {
   let stockArr = [];
   for (var i = 0; i < data.length; i++) {
     stockArr.push({
-      date: data[i].date,
+      date: new Date(data[i].date),
       value: parseInt(data[i].close)
     });
   }
@@ -255,15 +255,14 @@ const drawChart = function(data, color) {
   let y = d3.scaleLinear()
   .rangeRound([height, 0]);
 
-  var line = d3.line()
+  let line = d3.line()
   .x(function(d) { return x(d.date)})
   .y(function(d) { return y(d.value)})
-
   x.domain(d3.extent(data, function(d) { return d.date}));
   y.domain(d3.extent(data, function(d) { return d.value}));
 
   g.append("g")
-    .attr("transform", "translate (0," + height + ")")
+    .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x))
     .select(".domain")
     .remove();
@@ -281,7 +280,7 @@ const drawChart = function(data, color) {
   g.append("path")
     .datum(data)
     .attr("fill", "none")
-    .attr("stroke", color)
+    .attr("stroke", "red")
     .attr("stroke-linejoin", "round")
     .attr("stroke-linecap", "round")
     .attr("stroke-width", 1.5)
