@@ -169,7 +169,7 @@ const fetchNewData = function(input) {
       let result = parseData(response);
         window.setTimeout(() => {switchData(result)}, 500)
       })
-    })
+    }).then(fetchStockData(input))
   )
 }
 
@@ -236,15 +236,16 @@ const createStockApi = function(company, timeframe) {
 
 
 const drawChart = function(data, color) {
-  console.log(data);
+  d3.selectAll("svg > *").remove();
   let svgWidth = 600, svgHeight = 400;
   let margin = { top: 20, right: 20, bottom: 30, left: 50 }
   let width = svgWidth - margin.left - margin.right;
   let height = svgHeight - margin.top - margin.bottom;
-
   let svg = d3.select("#svg")
-  .attr("width", svgWidth)
+
+  svg.attr("width", svgWidth)
   .attr("height", svgHeight);
+
 
   let g = svg.append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -285,4 +286,6 @@ const drawChart = function(data, color) {
     .attr("stroke-linecap", "round")
     .attr("stroke-width", 1.5)
     .attr("d", line);
+
+    console.log(svg);
 }
