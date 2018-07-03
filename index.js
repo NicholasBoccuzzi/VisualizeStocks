@@ -224,8 +224,32 @@ const drawChart = function(data) {
   var line = d3.line()
   .x(function(d) { return x(d.date)})
   .y(function(d) { return y(d.value)})
-  
+
   x.domain(d3.extent(data, function(d) { return d.date}));
   y.domain(d3.extent(data, function(d) { return d.value}));
 
+  g.append("g")
+    .attr("transform", "translate (0," + height + ")")
+    .call(d3.axisBottom(x))
+    .select(".domain")
+    .remove();
+
+  g.append("g")
+    .call(d3.axisLeft(y))
+    .append("text")
+    .attr("fill", "#000")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", "0.71em")
+    .attr("text-anchor", "end")
+    .text("Price ($)");
+
+  g.append("path")
+    .datum(data)
+    .attr("fill", "none")
+    .attr("stroke", "red")
+    .attr("stroke-linejoin", "round")
+    .attr("stroke-linecap", "round")
+    .attr("stroke-width", 1.5)
+    .attr("d", line);
 }
