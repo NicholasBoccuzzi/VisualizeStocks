@@ -8,6 +8,7 @@ let companyArrow = document.getElementById("companyArrow");
 let stockArrow = document.getElementById("stockArrow");
 let tickerListContainer = document.getElementById("tickerListContainer");
 let currentCompanies = ["aapl"];
+let colors = ["blue", "red"]
 
 document.getElementById("menuOffclick").addEventListener("click", (event) => {
   d3.select("#menuContainer").attr("class", "default-menu close-menu");
@@ -63,7 +64,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     fetch(api).then((response) => { response.json().then((response) => {
     let result = parseData(response);
     window.setTimeout(() => {switchData(result)}, 500)
-  });})/*.then(fetch(stockApi).then((response) => { console.log(response.json()); }))   --- fetch Stock Data goes here*/
+  });}).then(() => {fetchStockData(currentCompanies[0])})/* --- fetch Stock Data goes here*/
   )
 });
 
@@ -88,7 +89,6 @@ const parseData = function(data) {
     website: "",
   };
 
-  console.log(data);
   if (data.companyName) {
     returnObject.companyName = data.companyName;
   }
@@ -126,7 +126,6 @@ const parseData = function(data) {
   if (data.website) {
     returnObject.website = data.website;
   }
-  console.log(returnObject)
   return returnObject;
 }
 
@@ -178,7 +177,7 @@ const fetchMenuTickers = function() {
   return (
     fetch(stockList).then((response) => {
       response.json().then((result) => {
-        let currentListNum = parseInt(tickerListContainer.getAttribute("data"))
+        let currentListNum = parseFloat(tickerListContainer.getAttribute("data"))
         for (var i = 0; i < result.length; i++) {
           let element = document.createElement("div");
           element.innerHTML = `${result[i].symbol}`;
@@ -205,7 +204,26 @@ const createCompanyApi = function(input) {
 }
 
 const fetchStockData = function(company, timeframe) {
+  let api = createStockApi(company, timeframe);
 
+  return (
+    fetch(api).then((response) => { response.json().then((data) => {
+      drawChart(parseStockData(data), "red")
+      })
+    })
+  )
+}
+
+const parseStockData = function(data) {
+  let stockArr = [];
+  for (var i = 0; i < data.length; i++) {
+    stockArr.push({
+      date: data[i].date,
+      value: parseInt(data[i].close)
+    });
+  }
+
+  return stockArr;
 }
 
 const createStockApi = function(company, timeframe) {
@@ -217,7 +235,8 @@ const createStockApi = function(company, timeframe) {
 }
 
 
-const drawChart = function(data) {
+const drawChart = function(data, color) {
+  console.log(data);
   let svgWidth = 600, svgHeight = 400;
   let margin = { top: 20, right: 20, bottom: 30, left: 50 }
   let width = svgWidth - margin.left - margin.right;
@@ -262,7 +281,7 @@ const drawChart = function(data) {
   g.append("path")
     .datum(data)
     .attr("fill", "none")
-    .attr("stroke", "red")
+    .attr("stroke", color)
     .attr("stroke-linejoin", "round")
     .attr("stroke-linecap", "round")
     .attr("stroke-width", 1.5)
