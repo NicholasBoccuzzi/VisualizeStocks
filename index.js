@@ -28,11 +28,11 @@ document.getElementById("companyInfo").addEventListener("click", (event) => {
 
 document.getElementById("stockInfo").addEventListener("click", (event) => {
   if (stockArrow.className.includes("close-arrow")) {
-    d3.select("#stockInfoContainer").attr("class", "grow-info");
+    d3.select("#stockInfoContainer").attr("class", "grow-graph");
     d3.select("#stockArrow")
     .attr("class", "fa fa-angle-right open-arrow");
   } else if (stockArrow.className.includes("open-arrow")) {
-    d3.select("#stockInfoContainer").attr("class", "shrink-info");
+    d3.select("#stockInfoContainer").attr("class", "shrink-graph");
     d3.select("#stockArrow")
     .attr("class", "fa fa-angle-right close-arrow");
   }
