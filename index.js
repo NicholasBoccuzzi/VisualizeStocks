@@ -73,7 +73,6 @@ document.getElementById("textSubmit").addEventListener("click", (event) => {
 });
 
 
-
 const parseData = function(data) {
   let returnObject = {
     companyName: "",
@@ -201,4 +200,32 @@ const hideInfo = function () {
 const createCompanyApi = function(input) {
   let api = `https://api.iextrading.com/1.0/stock/${input}/company`;
   return api;
+}
+
+const drawChart = function(data) {
+  let svgWidth = 600, svgHeight = 400;
+  let margin = { top: 20, right: 20, bottom: 30, left: 50 }
+  let width = svgWidth - margin.left - margin.right;
+  let height = svgHeight - margin.top - margin.bottom;
+
+  let svg = d3.select("#svg")
+  .attr("width", svgWidth)
+  .attr("height", svgHeight);
+
+  let g = svg.append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  let x = d3.scaleTime()
+  .rangeRound([0, width]);
+
+  let y = d3.scaleLinear()
+  .rangeRound([height, 0]);
+
+  var line = d3.line()
+  .x(function(d) { return x(d.date)})
+  .y(function(d) { return y(d.value)})
+  
+  x.domain(d3.extent(data, function(d) { return d.date}));
+  y.domain(d3.extent(data, function(d) { return d.value}));
+
 }
