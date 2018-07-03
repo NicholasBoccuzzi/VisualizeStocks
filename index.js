@@ -5,6 +5,7 @@ let stockList = "https://api.iextrading.com/1.0/ref-data/symbols";
 let textInput = document.getElementById("textInput");
 let menuContainer = document.getElementById("menuContainer");
 let companyArrow = document.getElementById("companyArrow");
+let stockArrow = document.getElementById("stockArrow");
 let tickerListContainer = document.getElementById("tickerListContainer");
 
 document.getElementById("menuOffclick").addEventListener("click", (event) => {
@@ -19,6 +20,19 @@ document.getElementById("companyInfo").addEventListener("click", (event) => {
     d3.select("#companyArrow")
     .attr("class", "fa fa-angle-right open-arrow");
   } else if (companyArrow.className.includes("open-arrow")) {
+    d3.select("#companyInfoContainer").attr("class", "shrink-info");
+    d3.select("#companyArrow")
+    .attr("class", "fa fa-angle-right close-arrow");
+  }
+});
+
+document.getElementById("companyInfo").addEventListener("click", (event) => {
+  if (stockArrow.className.includes("default-arrow") ||
+      stockArrow.className.includes("close-arrow")) {
+    d3.select("#stockInfoContainer").attr("class", "grow-info");
+    d3.select("#stockArrow")
+    .attr("class", "fa fa-angle-right open-arrow");
+  } else if (stockArrow.className.includes("open-arrow")) {
     d3.select("#companyInfoContainer").attr("class", "shrink-info");
     d3.select("#companyArrow")
     .attr("class", "fa fa-angle-right close-arrow");
