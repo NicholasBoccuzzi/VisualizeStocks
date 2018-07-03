@@ -17,7 +17,7 @@
       </div>
       <div class="flex-column menu-item-container">
         <div class="menu-text-container">
-          <input type="text" id="textInput" class= "text-input" value="" id="textInput"></input>
+          <input type="text" id="textInput" placeholder="Ticker" class= "text-input" value="" id="textInput"></input>
         </div>
         <div class="text-submit-container">
           <button type="submit" id="textSubmit" class="text-submit-button">Submit</button>
@@ -117,10 +117,15 @@
             </main>
           </div>
         </section>
+        <section class="graph-container">
+          <div id="stockInfo" class="arrow-container noselect">
+            <div class="info-title">
+              Stock Chart
+            </div>
+            <i id="companyArrow" class="fa fa-angle-right default-arrow"></i>
+          </div>
+        </section>
       </div>
-
-
-
     </main>
     <main id="loader" class="loader">
       <i class="fas fa-dollar-sign"></i>
