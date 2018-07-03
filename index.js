@@ -26,15 +26,14 @@ document.getElementById("companyInfo").addEventListener("click", (event) => {
   }
 });
 
-document.getElementById("companyInfo").addEventListener("click", (event) => {
-  if (stockArrow.className.includes("default-arrow") ||
-      stockArrow.className.includes("close-arrow")) {
+document.getElementById("stockInfo").addEventListener("click", (event) => {
+  if (stockArrow.className.includes("close-arrow")) {
     d3.select("#stockInfoContainer").attr("class", "grow-info");
     d3.select("#stockArrow")
     .attr("class", "fa fa-angle-right open-arrow");
   } else if (stockArrow.className.includes("open-arrow")) {
-    d3.select("#companyInfoContainer").attr("class", "shrink-info");
-    d3.select("#companyArrow")
+    d3.select("#stockInfoContainer").attr("class", "shrink-info");
+    d3.select("#stockArrow")
     .attr("class", "fa fa-angle-right close-arrow");
   }
 });
@@ -143,7 +142,7 @@ During the switch, I switch back to the loading screen and ensure that the compa
 information tab is closed while also switching to the new information
 */
 const switchData = function(result) {
-  d3.select("#companyInfoContainer").attr("class", "default-company-info-container")
+  d3.select("#companyInfoContainer").attr("class", "default-info-container")
   d3.select("#companyArrow").attr("class", "fa fa-angle-right default-arrow");
   d3.select("#main").attr("class", "main-container");
   d3.select("#loader").attr("class", "loader hide");
