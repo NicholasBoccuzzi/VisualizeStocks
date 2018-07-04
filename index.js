@@ -30,11 +30,11 @@ document.getElementById("companyInfo").addEventListener("click", (event) => {
 
 document.getElementById("stockInfo").addEventListener("click", (event) => {
   if (stockArrow.className.includes("close-arrow")) {
-    d3.select("#stockInfoContainer").attr("class", "grow-graph");
+    d3.select("#stockInfoContainer").attr("class", "graph grow-graph");
     d3.select("#stockArrow")
     .attr("class", "fa fa-angle-right open-arrow");
   } else if (stockArrow.className.includes("open-arrow")) {
-    d3.select("#stockInfoContainer").attr("class", "shrink-graph");
+    d3.select("#stockInfoContainer").attr("class", "graph shrink-graph");
     d3.select("#stockArrow")
     .attr("class", "fa fa-angle-right close-arrow");
   }
@@ -242,10 +242,6 @@ const drawChart = function(data, color) {
   let width = svgWidth - margin.left - margin.right;
   let height = svgHeight - margin.top - margin.bottom;
   let svg = d3.select("#svg")
-
-  svg.attr("width", svgWidth)
-  .attr("height", svgHeight);
-
 
   let g = svg.append("g")
   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
