@@ -442,6 +442,8 @@ table {
   opacity: 1;
 }
 .abs {
+  top:7%;
+  left: 5%;
   position: absolute;
 }
 
@@ -598,7 +600,7 @@ table {
 }
 
 .graph-container {
-  width: 100%;
+  width: calc(100% - 100px);
   max-width: 1366px;
   display: flex;
   justify-content: flex-start;
