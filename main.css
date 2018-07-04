@@ -415,7 +415,7 @@ table {
 .shrink-info {
   max-width: 1366px;
   width: 100%;
-  min-height: 0px;
+  height: 0px;
   animation: shrinkInfo .25s linear;
   box-shadow: 0px 4px 9px 0px rgb(0,0,0, .2);
   display: flex;
