@@ -410,13 +410,12 @@ table {
 }
 
 .close-graph {
-  min-height: 0vw;
 }
 
 .shrink-info {
   max-width: 1366px;
-  height: 0px;
   width: 100%;
+  min-height: 0px;
   animation: shrinkInfo .25s linear;
   box-shadow: 0px 4px 9px 0px rgb(0,0,0, .2);
   display: flex;
@@ -428,6 +427,7 @@ table {
 
 .shrink-graph {
   width: 100%;
+  height: 0px;
   align-self: center;
   position:relative;
   animation: shrinkGraph .25s linear;
@@ -440,7 +440,7 @@ table {
 .grow-info {
   max-width: 1366px;
   width: 100%;
-  animation: growInfo .25s linear;
+  animation: growInfo .5s linear;
   box-shadow: 0px 4px 9px 0px rgb(0,0,0, .2);
   display: flex;
   flex-direction: row;
@@ -485,12 +485,17 @@ table {
 
 @keyframes shrinkGraph {
   0% {
-    height: 100%;
+    height: 60vw;
     opacity: 1;
   }
 
+  50% {
+    height: 60vw;
+    opacity: 0;
+  }
+
   100% {
-    height: 0%;
+    height: 0vw;
     opacity: 0;
   }
 }
