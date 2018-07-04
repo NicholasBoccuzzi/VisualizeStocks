@@ -34,7 +34,7 @@ document.getElementById("stockInfo").addEventListener("click", (event) => {
     d3.select("#stockArrow")
     .attr("class", "fa fa-angle-right open-arrow");
   } else if (stockArrow.className.includes("open-arrow")) {
-    d3.select("#stockInfoContainer").attr("class", "graph shrink-graph");
+    d3.select("#stockInfoContainer").attr("class", "close-graph shrink-graph");
     d3.select("#stockArrow")
     .attr("class", "fa fa-angle-right close-arrow");
   }
@@ -234,7 +234,9 @@ const createStockApi = function(company, timeframe) {
   }
 }
 
-
+/* https://chartio.com/resources/tutorials/how-to-resize-an-svg-when-the-window-is-resized-in-d3-js/
+  How to resize the chart to fit the current window size.
+*/
 const drawChart = function(data, color) {
   d3.selectAll("svg > *").remove();
   let svgWidth = 600, svgHeight = 400;

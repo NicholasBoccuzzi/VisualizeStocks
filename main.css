@@ -82,7 +82,7 @@ table {
 }
 
 .content-container {
-  min-height: 65vh;
+  min-height: 65%;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
@@ -405,6 +405,14 @@ table {
 }
 
 
+.graph {
+  min-height: 60vw;
+}
+
+.close-graph {
+  min-height: 0vw;
+}
+
 .shrink-info {
   max-width: 1366px;
   height: 0px;
@@ -420,7 +428,6 @@ table {
 
 .shrink-graph {
   width: 100%;
-  min-height: 750px;
   align-self: center;
   position:relative;
   animation: shrinkGraph .25s linear;
@@ -442,7 +449,7 @@ table {
   opacity: 1;
 }
 .abs {
-  top:7%;
+  top:  10%;
   left: 5%;
   position: absolute;
 }
@@ -451,7 +458,6 @@ table {
   width: 100%;
   position:relative;
   align-self: center;
-  min-height: 750px;
   animation: growGraph .25s linear;
   box-shadow: 0px 4px 9px 0px rgb(0,0,0, .2);
   overflow: hidden;
