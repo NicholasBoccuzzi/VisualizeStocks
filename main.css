@@ -448,7 +448,7 @@ table {
   overflow: hidden;
   opacity: 1;
 }
-.abs {
+.graph-abs {
   top:  10%;
   left: 5%;
   position: absolute;
@@ -677,6 +677,16 @@ table {
     .company-info-25 {
       width: 100%;
       margin-bottom: 15px;
+    }
+
+    .graph-container {
+      width: 100%;
+    }
+
+    .graph-abs {
+      top: 3%;
+      left: 5%;
+      position: absolute;
     }
 }
 
