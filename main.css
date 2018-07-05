@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'MissDaisy';;
+  src: url('assets/MissDaisy.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 100;
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -201,11 +208,6 @@ table {
   z-index: 10
 }
 
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
 .menu-icon-container {
   display:block;
   align-items: center;
@@ -334,7 +336,10 @@ table {
 .info-title {
   margin-right: 20px;
   font-size: 30px;
+}
 
+.no-pointer {
+  cursor:default;
 }
 
 .info-container {
@@ -343,7 +348,7 @@ table {
   justify-content: flex-start;
   flex-direction: column;
   align-self: center;
-  margin: 0px 50px 50px 50px;
+  margin: 0px 50px 10px 50px;
 }
 
 .company-info-row {
@@ -624,6 +629,15 @@ table {
   height: 100%;
 }
 
+.width-onehundred {
+  width: 100%;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
 @media only screen and (max-width: 900px) {
     .title-text {
       font-size: 25px;
@@ -693,6 +707,11 @@ table {
       left: 5%;
       position: absolute;
     }
+}
+
+.title {
+  font-family: MissDaisy;
+  font-size: 50px;
 }
 
 /*
